@@ -43,6 +43,7 @@ public class LongestSubstringWithoutRepeatingCharacters3 {
         return length;
     }
 
+
     public static int lengthOfLongestSubstringV3_didntWork(String s){
         int length = 0;
         StringBuilder sb = new StringBuilder();
