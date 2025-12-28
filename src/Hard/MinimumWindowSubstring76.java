@@ -11,17 +11,25 @@ public class MinimumWindowSubstring76 {
     }
 
     public static String minWindow(String s, String t) {
+        int minLength = Integer.MAX_VALUE;
+        int minLeft = 0;
+        int minRight = 0;
         int right = 0;
-        int counter = 0;
         int left = 0;
-        String result = "";
         HashMap<Character, Integer> map = new HashMap<>();
         while (right < s.length()){
             char ch = s.charAt(right);
-            map.put(ch, counter);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
             right++;
-            result = map.toString();
+            if (right < minLength){
+                minLength = s.length();
+                minLeft = left;
+                minRight = right;
+                map.remove(s.charAt(left));
+                left++;
+            }
         }
-        return result;
+
+        return s.substring(minLeft, minRight);
     }
 }
